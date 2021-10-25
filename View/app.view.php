@@ -20,7 +20,8 @@
                         </div>
                         
                         <div class='linkname'>
-                            <a href='".$link->getHref()."'>".$link->getName()."</a>
+                            <a href='".$link->getHref()."' target='".$link->getTarget()."'>".$link->getName()."</a>
+                            <a href='?controller=delLink&idLink=".$link->getId()."'><i class='far fa-trash-alt'></i></a>
                         </div>
                     </div>";
             }

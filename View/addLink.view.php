@@ -9,8 +9,14 @@
             <input type="text" name="link-title" id="link-titre">
         </div>
         <div>
-            <label for="link-cible">Cible</label>
-            <input type="text" name="link-target" id="link-cible">
+            <label for="link-cible">Target</label>
+
+            <select name="link-target" id="link-cible">
+                <option value="_blank">_blank</option>
+                <option value="parent">parent</option>
+                <option value="self">self</option>
+                <option value="top">top</option>
+            </select>
         </div>
         <div>
             <label for="link-nom">Nom</label>

@@ -34,6 +34,11 @@ if (isset($_GET['controller'])) {
 
         case 'userAddLink' :
             (new LinkController())->userAddLink();
+            break;
+
+        case 'delLink' :
+            (new LinkController())->userDelLink();
+            break;
     }
 }
 else {

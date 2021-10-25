@@ -125,6 +125,11 @@ i {
     text-decoration: none;
 }
 
+.linkname a i {
+    font-size: 2rem;
+    padding-left: 1rem;
+}
+
 #formLink {
     width: 100%;
     height: fit-content;

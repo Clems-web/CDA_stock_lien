@@ -27,4 +27,15 @@ class LinkController {
         }
     }
 
+    public function userDelLink() {
+        if (isset($_GET['idLink'])) {
+
+            $id = (new DB())->cleanInput($_GET['idLink']);
+
+            (new LinkManager())->delLink($id);
+
+            header('Location: ../index.php?controller=UserApp');
+        }
+    }
+
 }

@@ -42,5 +42,15 @@ class LinkManager {
         $request->execute();
     }
 
+    public function delLink($id) {
+        $request = DB::getInstance()->prepare("
+        DELETE FROM prefix_link WHERE id = :id
+        ");
+
+        $request->bindParam(':id', $id);
+
+        $request->execute();
+    }
+
 
 }
