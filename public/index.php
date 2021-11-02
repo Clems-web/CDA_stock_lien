@@ -1,15 +1,18 @@
 <?php
 
-use Cleme\CdaStockLien\Controller;
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+require '../vendor/autoload.php';
+
 use Cleme\CdaStockLien\Controller\HomeController;
 use Cleme\CdaStockLien\Controller\UserController;
 use Cleme\CdaStockLien\Controller\LinkController;
 
-require '..\vendor\autoload.php';
 
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+
+
 
 
 session_start();
@@ -24,6 +27,14 @@ if (isset($_GET['controller'])) {
 
         case 'userConnection' :
             (new UserController())->userConnexion();
+            break;
+
+        case 'userRegister' :
+            (new UserController())->userRegister();
+            break;
+
+        case 'userRegistration' :
+            (new UserController())->userRegistration();
             break;
 
         case 'UserApp' :

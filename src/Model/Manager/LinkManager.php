@@ -22,22 +22,24 @@ class LinkManager {
                     $links_data['href'],
                     $links_data['title'],
                     $links_data['target'],
-                    $links_data['name']
+                    $links_data['name'],
+                    $links_data['user_fk']
                 );
             }
         }
         return $links;
     }
 
-    public function addLink($href, $title, $target, $name) {
+    public function addLink($href, $title, $target, $name, $user_fk) {
         $request = DB::getInstance()->prepare("
-        INSERT INTO prefix_link(href, title, target, name) VALUES (:href, :title, :target, :name)
+        INSERT INTO prefix_link(href, title, target, name) VALUES (:href, :title, :target, :name, :user_fk)
         ");
 
         $request->bindValue(':href', $href);
         $request->bindValue(':title', $title);
         $request->bindValue(':target', $target);
         $request->bindValue(':name', $name);
+        $request->bindValue(':user_fk', $user_fk);
 
         $request->execute();
     }

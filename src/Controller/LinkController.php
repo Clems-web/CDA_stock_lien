@@ -20,8 +20,9 @@ class LinkController {
             $title = (new DB())->cleanInput($_POST['link-title']);
             $target = (new DB())->cleanInput($_POST['link-target']);
             $name = (new DB())->cleanInput($_POST['link-name']);
+            $user_fk = $_SESSION['user']->getId();
 
-            (new LinkManager())->addLink($href, $title, $target, $name);
+            (new LinkManager())->addLink($href, $title, $target, $name, $user_fk);
 
             header('Location: ../index.php?controller=UserApp');
         }
