@@ -29,6 +29,10 @@ if (isset($_GET['controller'])) {
             (new UserController())->userConnexion();
             break;
 
+        case 'userDisconnect' :
+            (new UserController())->userDisconnect();
+            break;
+
         case 'userRegister' :
             (new UserController())->userRegister();
             break;

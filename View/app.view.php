@@ -1,11 +1,17 @@
 <div id="appContainer">
 
     <div id="navbar">
+
         <div>
             <i class="fas fa-plus-square"></i>
             <a href="?controller=addLink">Ajouter un lien</a>
         </div>
-        <i class="fas fa-user-circle"></i>
+
+        <div>
+            <a href="?controller=userDisconnect">Se déconnecter</a>
+            <i class="fas fa-user-circle"></i>
+        </div>
+
     </div>
 
     <div id="linksContainer">
