@@ -136,6 +136,11 @@ i {
     height: fit-content;
 }
 
+#support {
+    padding: 1rem;
+    font-size: 3rem;
+}
+
 
 
 

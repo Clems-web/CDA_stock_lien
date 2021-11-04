@@ -80,7 +80,7 @@ class UserController {
             $message = (new DB())->cleanInput($_POST['user-message']);
 
             $to = 'DumpMail@gmail.com';
-            
+
             $subject = $_SESSION['user']->getPrenom()." ". $_SESSION['user']->getNom(). " 's request";
 
             // Set from headers
@@ -89,6 +89,7 @@ class UserController {
             // Send our email
             mail($to, $subject, $message, $headers);
         }
+        header('Location: ../index.php?controller=UserApp');
     }
 
 }

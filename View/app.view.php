@@ -14,7 +14,7 @@
 
     </div>
 
-    <div>
+    <div id="support">
         <a href="?controller=userSupport">Support</a>
     </div>
 
