@@ -32,7 +32,7 @@ class LinkManager {
 
     public function addLink($href, $title, $target, $name, $user_fk) {
         $request = DB::getInstance()->prepare("
-        INSERT INTO prefix_link(href, title, target, name) VALUES (:href, :title, :target, :name, :user_fk)
+        INSERT INTO prefix_link(href, title, target, name, user_fk) VALUES (:href, :title, :target, :name, :user_fk)
         ");
 
         $request->bindValue(':href', $href);

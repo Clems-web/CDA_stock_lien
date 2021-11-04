@@ -45,6 +45,15 @@ if (isset($_GET['controller'])) {
             (new UserController())->UserApp();
             break;
 
+        case 'userSupport' :
+            (new UserController())->userSupport();
+            break;
+
+        case 'userSendSupport' :
+            (new UserController())->userSendSupportMessage();
+            break;
+
+
         case 'addLink' :
             (new LinkController())->formAddLink();
             break;

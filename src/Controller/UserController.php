@@ -70,4 +70,25 @@ class UserController {
         }
     }
 
+    public function userSupport() {
+        $this->render('support', 'Support');
+    }
+
+    public function userSendSupportMessage() {
+        if (isset($_POST['user-message'], $_SESSION['user'])) {
+
+            $message = (new DB())->cleanInput($_POST['user-message']);
+
+            $to = 'DumpMail@gmail.com';
+            
+            $subject = $_SESSION['user']->getPrenom()." ". $_SESSION['user']->getNom(). " 's request";
+
+            // Set from headers
+            $headers = 'From:'.$_SESSION['user']->getMail().'' . "\r\n";
+
+            // Send our email
+            mail($to, $subject, $message, $headers);
+        }
+    }
+
 }

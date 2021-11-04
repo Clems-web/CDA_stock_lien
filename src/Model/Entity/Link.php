@@ -19,6 +19,7 @@ class Link {
      * @param string $title
      * @param string $target
      * @param string $name
+     * @param int $user_fk
      */
 
     public function __construct(?int $id, string $href, string $title, string $target, string $name, $user_fk) {

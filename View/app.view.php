@@ -14,6 +14,11 @@
 
     </div>
 
+    <div>
+        <a href="?controller=userSupport">Support</a>
+    </div>
+
+
     <div id="linksContainer">
         <?php
             use Cleme\CdaStockLien\Model\Manager\LinkManager;

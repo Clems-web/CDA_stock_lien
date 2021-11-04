@@ -16,5 +16,6 @@
 
     <script src="https://kit.fontawesome.com/de3d4c2e3d.js" crossorigin="anonymous"></script>
 </div>
+<script src="./assets/JS/app.js"></script>
 </body>
 </html>
