@@ -39,4 +39,28 @@ class LinkController {
         }
     }
 
+    public function userEditLink() {
+        $this->render('editLink', 'Editer votre lien');
+    }
+
+    public function linkUpdate() {
+        if (isset($_POST['link-id'],$_POST['link-href'], $_POST['link-title'], $_POST['link-target'], $_POST['link-name'], $_SESSION['user'])) {
+
+            $id = (new DB())->cleanInput($_POST['link-id']);
+            $href = (new DB())->cleanInput($_POST['link-href']);
+            $title = (new DB())->cleanInput($_POST['link-title']);
+            $target = (new DB())->cleanInput($_POST['link-target']);
+            $name = (new DB())->cleanInput($_POST['link-name']);
+
+            $link = (new LinkManager())->getLinkById($id)->getUserFk();
+
+            if ($link == $_SESSION['user']->getId()) {
+                (new LinkManager())->updateLink($id, $href, $title, $target, $name);
+                header('Location: ../index.php?controller=UserApp');
+            }
+            
+
+        }
+    }
+
 }

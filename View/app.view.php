@@ -31,6 +31,7 @@
                         </div>
                         
                         <div class='linkname'>
+                            <a href='?controller=updateLink&idLink=".$link->getId()."'><i class='fas fa-pen'></i></a>
                             <a href='".$link->getHref()."' target='".$link->getTarget()."'>".$link->getName()."</a>
                             <a href='?controller=delLink&idLink=".$link->getId()."'><i class='far fa-trash-alt'></i></a>
                         </div>
