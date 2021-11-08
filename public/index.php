@@ -53,6 +53,9 @@ if (isset($_GET['controller'])) {
             (new UserController())->userSendSupportMessage();
             break;
 
+        case 'userStats' :
+            (new UserController())->userStat();
+            break;
 
         case 'addLink' :
             (new LinkController())->formAddLink();
@@ -68,6 +71,10 @@ if (isset($_GET['controller'])) {
 
         case 'linkUpdate' :
             (new LinkController())->linkUpdate();
+            break;
+
+        case 'incrementeLink' :
+            (new LinkController())->linkIncrement();
             break;
 
         case 'delLink' :

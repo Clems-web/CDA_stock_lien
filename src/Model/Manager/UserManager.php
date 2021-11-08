@@ -11,7 +11,6 @@ class UserManager {
     // User connect
     public function connectUser(string $mail, string $password){
 
-        $user = "";
 
         $request = DB::getInstance()->prepare("SELECT * FROM prefix_user WHERE mail = :mail");
         $request->bindValue(':mail', $mail);
@@ -29,10 +28,10 @@ class UserManager {
                         $password,
                         $user_data['role_fk']
                     );
+                    return $user;
                 }
             }
         }
-        return $user;
     }
 
     public function registerUser(User $user) {

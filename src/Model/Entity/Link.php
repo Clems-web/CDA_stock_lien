@@ -10,25 +10,28 @@ class Link {
     private ?string $target;
     private ?string $name;
     private ?int $user_fk;
+    private ?int $clickNumber;
 
 
     /**
-     * Link Constructor
+     * Link constructor
      * @param int|null $id
      * @param string $href
      * @param string $title
      * @param string $target
      * @param string $name
      * @param int $user_fk
+     * @param int $clickNumber
      */
 
-    public function __construct(?int $id, string $href, string $title, string $target, string $name, $user_fk) {
+    public function __construct(?int $id, string $href, string $title, string $target, string $name, int $user_fk, int $clickNumber) {
         $this->id = $id;
         $this->href = $href;
         $this->title = $title;
         $this->target = $target;
         $this->name = $name;
         $this->user_fk = $user_fk;
+        $this->clickNumber = $clickNumber;
     }
 
     /**
@@ -125,6 +128,22 @@ class Link {
     public function setUserFk(?int $user_fk): void
     {
         $this->user_fk = $user_fk;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getClickNumber(): ?int
+    {
+        return $this->clickNumber;
+    }
+
+    /**
+     * @param int|null $clickNumber
+     */
+    public function setClickNumber(?int $clickNumber): void
+    {
+        $this->clickNumber = $clickNumber;
     }
 
 

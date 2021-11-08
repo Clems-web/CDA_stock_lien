@@ -16,13 +16,14 @@
 
     <div id="support">
         <a href="?controller=userSupport">Support</a>
+        <a href="?controller=userStats">Stats</a>
     </div>
 
 
     <div id="linksContainer">
         <?php
             use Cleme\CdaStockLien\Model\Manager\LinkManager;
-            $linkTab = (new LinkManager())->getLinks();
+            $linkTab = (new LinkManager())->getLinksByUser($_SESSION['user']->getId());
 
             foreach ($linkTab as $link) {
                 echo "<div class='square'>
@@ -32,7 +33,7 @@
                         
                         <div class='linkname'>
                             <a href='?controller=updateLink&idLink=".$link->getId()."'><i class='fas fa-pen'></i></a>
-                            <a href='".$link->getHref()."' target='".$link->getTarget()."'>".$link->getName()."</a>
+                            <a class='linkCountable' data-id='".$link->getId()."' href='".$link->getHref()."' target='".$link->getTarget()."'>".$link->getName()."</a>
                             <a href='?controller=delLink&idLink=".$link->getId()."'><i class='far fa-trash-alt'></i></a>
                         </div>
                     </div>";

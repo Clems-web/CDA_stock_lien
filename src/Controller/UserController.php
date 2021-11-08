@@ -92,4 +92,8 @@ class UserController {
         header('Location: ../index.php?controller=UserApp');
     }
 
+    public function userStat() {
+        $this->render('stats', 'Vos stats');
+    }
+
 }

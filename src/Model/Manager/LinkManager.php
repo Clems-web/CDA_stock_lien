@@ -23,7 +23,8 @@ class LinkManager {
                     $links_data['title'],
                     $links_data['target'],
                     $links_data['name'],
-                    $links_data['user_fk']
+                    $links_data['user_fk'],
+                    $links_data['clickNumber']
                 );
             }
         }
@@ -46,16 +47,43 @@ class LinkManager {
                     $data['title'],
                     $data['target'],
                     $data['name'],
-                    $data['user_fk']
+                    $data['user_fk'],
+                    $data['clickNumber']
                 );
                 return $link;
             }
         }
     }
 
-    public function addLink($href, $title, $target, $name, $user_fk) {
+    public function getLinksByUser(int $id) {
+        $links = [];
+        $request = DB::getInstance()->prepare("SELECT * FROM prefix_link WHERE user_fk = :user_fk");
+
+        $request->bindValue(':user_fk', $id);
+        $result = $request->execute();
+
+        if ($result) {
+
+            $data = $request->fetchAll();
+
+            foreach($data as $links_data) {
+                $links[] = new Link(
+                    $links_data['id'],
+                    $links_data['href'],
+                    $links_data['title'],
+                    $links_data['target'],
+                    $links_data['name'],
+                    $links_data['user_fk'],
+                    $links_data['clickNumber']
+                );
+            }
+        }
+        return $links;
+    }
+
+    public function addLink($href, $title, $target, $name, $user_fk, $clicknumber) {
         $request = DB::getInstance()->prepare("
-        INSERT INTO prefix_link(href, title, target, name, user_fk) VALUES (:href, :title, :target, :name, :user_fk)
+        INSERT INTO prefix_link(href, title, target, name, user_fk, clickNumber) VALUES (:href, :title, :target, :name, :user_fk, :clickNumber)
         ");
 
         $request->bindValue(':href', $href);
@@ -63,6 +91,7 @@ class LinkManager {
         $request->bindValue(':target', $target);
         $request->bindValue(':name', $name);
         $request->bindValue(':user_fk', $user_fk);
+        $request->bindValue(':clickNumber', $clicknumber);
 
         $request->execute();
     }
@@ -80,6 +109,35 @@ class LinkManager {
 
         $request->execute();
 
+    }
+
+    public function incrementeLink($id) {
+        $request = DB::getInstance()->prepare("
+            UPDATE prefix_link SET clickNumber = (clickNumber + 1) WHERE id = :id
+        ");
+
+        $request->bindValue(':id', $id);
+        $request->execute();
+    }
+
+    public function getNumberClick($id) {
+        $request = DB::getInstance()->prepare("
+            SELECT clickNumber FROM prefix_link WHERE user_fk = :id
+        ");
+
+        $request->bindValue(':id', $id);
+        $result = $request->execute();
+
+        if ($result) {
+
+            $data = $request->fetchAll();
+
+            foreach($data as $links_data) {
+                $links[] = $links_data['clickNumber'];
+            }
+
+        }
+        return $links;
     }
 
     public function delLink($id) {

@@ -22,7 +22,7 @@ class LinkController {
             $name = (new DB())->cleanInput($_POST['link-name']);
             $user_fk = $_SESSION['user']->getId();
 
-            (new LinkManager())->addLink($href, $title, $target, $name, $user_fk);
+            (new LinkManager())->addLink($href, $title, $target, $name, $user_fk, 0);
 
             header('Location: ../index.php?controller=UserApp');
         }
@@ -44,7 +44,7 @@ class LinkController {
     }
 
     public function linkUpdate() {
-        if (isset($_POST['link-id'],$_POST['link-href'], $_POST['link-title'], $_POST['link-target'], $_POST['link-name'], $_SESSION['user'])) {
+        if (isset($_POST['link-id'], $_POST['link-href'], $_POST['link-title'], $_POST['link-target'], $_POST['link-name'], $_SESSION['user'])) {
 
             $id = (new DB())->cleanInput($_POST['link-id']);
             $href = (new DB())->cleanInput($_POST['link-href']);
@@ -58,8 +58,20 @@ class LinkController {
                 (new LinkManager())->updateLink($id, $href, $title, $target, $name);
                 header('Location: ../index.php?controller=UserApp');
             }
-            
 
+
+        }
+    }
+
+    public function linkIncrement() {
+        if (isset($_GET['linkId'])) {
+            $id = (new DB())->cleanInput($_GET['linkId']);
+
+            $link = (new LinkManager())->getLinkById($id);
+
+            if ($link->getUserFk() == $_SESSION['user']->getId()) {
+                (new LinkManager())->incrementeLink($id);
+            }
         }
     }
 
