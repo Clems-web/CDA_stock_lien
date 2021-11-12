@@ -5,7 +5,7 @@ namespace Cleme\CdaStockLien\Model\Manager;
 use Cleme\CdaStockLien\Model\DB;
 use Cleme\CdaStockLien\Model\Entity\User;
 
-session_start();
+
 class UserManager {
 
     // User connect

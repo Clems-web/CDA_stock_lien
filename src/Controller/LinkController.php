@@ -75,4 +75,29 @@ class LinkController {
         }
     }
 
+
+    public function getLinksStatsByUser() {
+        if (isset($_SESSION['user'])) {
+
+            $result = (new LinkManager())->getLinksByUser($_SESSION['user']->getId());
+
+            if ($result) {
+
+                $tab = [];
+
+                foreach ($result as $link) {
+
+                    $tab[] = [
+                        'name' => $link->getName(),
+                        'clickNumber' => $link->getClickNumber()
+                    ];
+
+                }
+
+                echo json_encode($tab);
+
+            }
+
+        }
+    }
 }

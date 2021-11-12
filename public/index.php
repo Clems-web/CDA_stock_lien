@@ -57,6 +57,10 @@ if (isset($_GET['controller'])) {
             (new UserController())->userStat();
             break;
 
+        case 'getLinkStats' :
+            (new LinkController())->getLinksStatsByUser();
+            break;
+
         case 'addLink' :
             (new LinkController())->formAddLink();
             break;

@@ -31,6 +31,9 @@ class LinkManager {
         return $links;
     }
 
+
+
+
     public function getLinkById(int $id) {
         $request = DB::getInstance()->prepare("SELECT * FROM prefix_link WHERE id = :id");
 
@@ -148,6 +151,29 @@ class LinkManager {
         $request->bindParam(':id', $id);
 
         $request->execute();
+    }
+
+
+    public function getUserFkByHref($href) {
+        $request = DB::getInstance()->prepare("
+            SELECT * FROM prefix_link WHERE href = :href
+        ");
+
+        $request->bindValue(':href', $href);
+
+        $result = $request->execute();
+
+        $tab = [];
+
+        if ($result) {
+            $data = $request->fetchAll();
+
+            foreach ($data as $linkData) {
+                $tab[] = $linkData;
+            }
+            return $tab;
+        }
+
     }
 
 
