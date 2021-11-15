@@ -143,6 +143,27 @@ i {
 }
 
 
+#statContainer {
+    width: 100%;
+    height: fit-content;
+}
 
+#containerCanva {
+    width: 100%;
+    height: 10rem;
+}
+
+#myChart {
+    width : 60%;
+    height: 5rem;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-top: 10rem;
+}
+
+#statContainer div a, #statContainer div p {
+    font-size: 1.5rem;
+    padding: 1rem;
+}
 
 

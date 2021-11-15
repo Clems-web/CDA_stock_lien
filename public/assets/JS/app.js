@@ -1,3 +1,5 @@
+import "../../node_modules/chart.js/dist/chart.js"
+
 let allLinks = document.getElementsByClassName('linkCountable');
 
 for (let link of allLinks) {
@@ -15,8 +17,8 @@ for (let link of allLinks) {
 // Ajax request for input search in recipe page
 function getNumberOfClick(){
 
-    tabName = [];
-    tabClickNumber = [];
+    let tabName = [];
+    let tabClickNumber = [];
 
     // AJAX request to connect to server and manager.php
     const xhr = new XMLHttpRequest();
@@ -32,6 +34,27 @@ function getNumberOfClick(){
             tabClickNumber.push(link.clickNumber);
         }
 
+        const ctx = document.getElementById('myChart');
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: tabName,
+                datasets: [{
+                    label: 'Number of clicks per link',
+                    data: tabClickNumber,
+                    backgroundColor: 'red',
+                    borderColor: 'black',
+                    borderWidth: '1'
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
 
     }
 
@@ -39,27 +62,7 @@ function getNumberOfClick(){
     xhr.send();
 
     
-    const ctx = document.getElementById('myChart');
-    const myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: tabName,
-            datasets: [{
-                label: 'Number of clicks per link',
-                data: tabClickNumber,
-                backgroundColor: 'red',
-                borderColor: 'black',
-                borderWidth: '2px'
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
+
 
 }
 

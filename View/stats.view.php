@@ -38,8 +38,8 @@ echo "
                 Nombre d'utilisateurs avec qui vous avez un/des lien(s) en communs : ".(count($result) - 1)."
             </p>
         </div>
-        <div>
-            <canvas id='myChart' width='400' height='400'></canvas>
+        <div id='containerCanva'>
+            <canvas id='myChart'></canvas>
         </div>
     </div>
 
